@@ -1,71 +1,278 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lukiasz@Home on Lukiasz@Home</title>
+    <title>Łukasz Olender on Łukasz Olender</title>
     <link>https://lukiasz.github.io/</link>
-    <description>Recent content in Lukiasz@Home on Lukiasz@Home</description>
+    <description>Recent content in Łukasz Olender on Łukasz Olender</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Apr 2015 02:13:50 +0000</lastBuildDate>
+    <copyright>&amp;copy; 2017 Łukasz Olender</copyright>
+    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>About</title>
-      <link>https://lukiasz.github.io/about/</link>
-      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
+      <title>The history of Way To Master and lessons learned</title>
+      <link>https://lukiasz.github.io/post/way-to-master-post-mortem/</link>
+      <pubDate>Sun, 10 Sep 2017 00:00:00 +0200</pubDate>
       
-      <guid>https://lukiasz.github.io/about/</guid>
+      <guid>https://lukiasz.github.io/post/way-to-master-post-mortem/</guid>
       <description>
 
-&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
+&lt;p&gt;This page describes a brief history of one of the most interesting after-hour projects that I&amp;rsquo;ve been involved into. It&amp;rsquo;s called &lt;a href=&#34;www.waytomaster.com&#34; target=&#34;_blank&#34;&gt;Way To Master&lt;/a&gt; and it was intended to help learning English for Polish people. Nothing related to it happened for a two years from now. There are no users, no ads, no new features. Also, there is one week left until domain will expire so probably now the page you&amp;rsquo;re reading is the only visible sign of existence of Way To Master. I miss it a little because it was one of most interesting things I&amp;rsquo;ve did and also I believe that idea is still valid. I&amp;rsquo;m writing this post also for future-me. There will be a point in my life when I&amp;rsquo;ll forget some of these things and then I&amp;rsquo;ll just open it and read.&lt;/p&gt;
 
-&lt;p&gt;My name is Łukasz Olender, I&amp;rsquo;m a 27 years old computer programmer
-living near Katowice, Poland. Passionate about every aspect of programming
-with strong technical and some enterprenerial skills. Being easy-going and
-motivated by achievements person makes me constantly look for new
-opportunities — both in programming world and other parts of life.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve split this article into two separate posts. The first one (that you&amp;rsquo;re reading right now) is overall description of the project. The second one explains technicalities and will be published soon.&lt;/p&gt;
 
-&lt;h2 id=&#34;programming&#34;&gt;Programming&lt;/h2&gt;
 
-&lt;p&gt;Most of commercial things I developed were in C#.
-I consider myself pretty experienced with .NET ecosystem -  tools.&lt;/p&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/screen1.jpg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;In-line translating (.srt format).&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
 
-&lt;p&gt;Although for most non computation-intensive things I&amp;rsquo;m ok with them, I&amp;rsquo;m
-looking forward for opportunities to use functional-first languages for
-processes and domain modelling purposes &amp;ndash; I&amp;rsquo;m one of these guys who believes
-in using right tools for right problems rather than adapting problems to
-tools that someone already knows. In the world of applications created to
-help real businesses operating, the most interesting job is being an
-software architect. I&amp;rsquo;m doing the best I can to be one of them :)&lt;/p&gt;
 
-&lt;h2 id=&#34;music&#34;&gt;Music&lt;/h2&gt;
+&lt;h2 id=&#34;learning-foreign-languages-standard-approach&#34;&gt;Learning foreign languages - standard approach&lt;/h2&gt;
 
-&lt;p&gt;I like listening and performing music. I can play pretty well on the clarinet
-and have good understanding music theory (scores, acoustic, harmonic and so on).
-I&amp;rsquo;m spending some of my free time playing in local folk band Zespoł Pieśni i Tańca Chorzów as a first
-clarinetist. Since June 2016, we&amp;rsquo;re associated with CIOFF organization which is an official
-partner of UNESCO. That basically tells that we&amp;rsquo;re representing quite good standards. I visited many countries Europe (inside European Union as well as outside of it) with the band.&lt;/p&gt;
+&lt;p&gt;Let me start from the base idea. Way to master was all about learning foreign languages. And learning a language is a bit twisted phenomena comparing to learning other things. Usually, if you want to master some subject, you&amp;rsquo;re using language (either spoken or written) to learn new concepts. The role of a language here is acting as a transport layer carrying content to learn. By adjusting language, one can gain better understanding of given concept - sometimes learned topics are easier to understand if different words are used and sometimes the opposite holds true.&lt;/p&gt;
 
-&lt;p&gt;In the past, I spent some time using computers for electronic music creation.
-Synthesizers, samples, what have you. I really like them and although none of
-things I created is considered anything more than an experiment, I&amp;rsquo;m sharing them on a &lt;em&gt;Music&lt;/em&gt; subpage.
-I hope that at some point of my live I&amp;rsquo;ll manage to
-return to this.&lt;/p&gt;
+&lt;p&gt;Ff you&amp;rsquo;re learning a language, what you want to learn is the transport layer and you&amp;rsquo;re doing it by utilizing some content - articles, sentences, songs, movies, dialogues. Whatever way of learning a language you will use, you need &lt;em&gt;something&lt;/em&gt; to read, write, speak or hear about.&lt;/p&gt;
 
-&lt;h2 id=&#34;other-areas&#34;&gt;Other areas&lt;/h2&gt;
+&lt;p&gt;These &lt;em&gt;somethings&lt;/em&gt; to read, write, speak or hear about are usually fixed and provided by a course creators. Sometimes student has limited possibility of choosing one article or another but there are chances that nothing will really meet his areas of interests anyway. It&amp;rsquo;s partially because people are varying on their interests and partially because learning materials need to be adjusted basing on language level.&lt;/p&gt;
 
-&lt;p&gt;Love skiing, rollerskating, swimming, black holes, coursera, chips and fish,
-mass effect, simpsons, the wire, beck, radiohead and beer.&lt;/p&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/app_screen1.gif&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Summary widget displayed after uploading new subtitles.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;learning-foreign-languages-our-approach&#34;&gt;Learning foreign languages - our approach&lt;/h2&gt;
+
+&lt;p&gt;The core idea behind Way To Master was to allow to use any materials for learning foreign languages.&lt;/p&gt;
+
+&lt;p&gt;User was supposed to upload original content and then few things were happening:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Content was analyzed from the language perspective - words were categorized to known and unknown for the particular user basing on his pervious experience with the system,&lt;/li&gt;
+&lt;li&gt;Unknown words were translated directly in content (depending of content type - differently for movies subtitles, differently for ebooks),&lt;/li&gt;
+&lt;li&gt;Unknown words were saved in database with their contexts (one or few surrounding sentences),&lt;/li&gt;
+&lt;li&gt;Unknown words were added into built-in &lt;a href=&#34;https://en.wikipedia.org/wiki/Spaced_repetition&#34; target=&#34;_blank&#34;&gt;spaced repetitions system&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Now, user could:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download modified content,&lt;/li&gt;
+&lt;li&gt;Download flashcards with translations and words contexts,&lt;/li&gt;
+&lt;li&gt;Learn unknown words on the webpage or directly mark them as known.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The learning cycle for the user consisted of:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Uploading, downloading and utilizing modified content - watching movies, playing computer games, reading e-books,&lt;/li&gt;
+&lt;li&gt;Come back to system few times in a week to make repetitions of learned words.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;One interesting idea that come later was to allow to combine already translated materials - like movies or games subtitles. They usually have many translations and starting learning from them could only focus on simpler sentences leaving harder ones untranslated.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/screen2.jpg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Top scree translating (.ass format).&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;the-big-picture&#34;&gt;The big picture&lt;/h2&gt;
+
+&lt;p&gt;Assuming correct implementation, this system would allow anyone to learn any popular language with an additional boost of experiencing content he likes. That should make the whole process of language acquisition a lot more convenient and a little similar to how people are learning new languages when they migrate to other countries. I couldn&amp;rsquo;t emphasize that more - just please hold on for a moment and imagine - doesn&amp;rsquo;t it look like a way of learning languages that will anyway come up at one time in the future? People playing computer games, watching movies, reading books AND learning languages by the way&amp;hellip; The idea is very alluring, at least for me.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/app_screen2.gif&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;List of words occurring in some subtitles.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;early-stages&#34;&gt;Early stages&lt;/h2&gt;
+
+&lt;p&gt;During spring of 2013, I and few friends from the same university group created a desktop application that could read text files, extract words from them and synchronize state with remote server. It was focused mostly on movies subtitles but parser was quite generic (it basically cut off all of strings which were not dictionary-based words) and it worked also for most of plain-text based formats. We never showed that for anyone except our professor - this project was purely for university and we didn&amp;rsquo;t thought of it as a any kind of startup or after-hours project.&lt;/p&gt;
+
+&lt;p&gt;Then, for our bachelor degree, we implemented a little extended version with a web interface. Never released, only for university. After that, me and my friend Wojtek decided to give it a try and release it to the public and that&amp;rsquo;s where the &lt;em&gt;startup&lt;/em&gt; chapter starts.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/landing.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Our landing page.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;final-stage&#34;&gt;Final stage&lt;/h2&gt;
+
+&lt;p&gt;Beginning of 2014 was time of everyone doing their startups, at least that is how I remembered that time. There were a lot of conferences related to this topic in Poland and a lot of buzz about it. Everyone was doing landing pages so we decided to do a landing page before we complete final version. So we did a landing page. Publishing a real service was a little harder than we thought; yet we had a lot of fun doing side quests - like spending days trying to host our solution on linux in one of Polish small cloud provider or asking random people whether they like the idea. At some point in time we decided to reshape the idea and accomplish something simpler. Driven by all startup gurus advices, we felt that we need to find our target group and focus mostly on them. So we picked:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Movies subtitles only&lt;/li&gt;
+&lt;li&gt;People speaking in Polish language which are learning English&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We did it under assumption: &lt;em&gt;If we can interest polish people with only such a product, it proves that it&amp;rsquo;s worth doing&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Speaking about work - I was mostly responsible for logic of parsing files, extracting words and putting translations in-place. Wojtek was mostly doing frontend and database-related logic (saving words knowledge, comparing knowledge with what was in new files).&lt;/p&gt;
+
+
+&lt;figure&gt;
+&lt;video class=&#34;video-js&#34; width=&#34;640&#34; height=&#34;385&#34; controls&gt;
+    
+       &lt;source src=&#34;https://lukiasz.github.io/img/wtm/wtm_desktop.mp4&#34; type=&#34;video/mp4&#34;&gt;
+       
+       
+    
+   Your browser does not support the video tag.
+   &lt;/video&gt;
+   &lt;figcaption&gt;Desktop application was making subtitle translating cycle easier.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;At the beginning of October, we finally put our application to the real world. In October 28, 2014, we put it on Polish reddit-like page called &lt;a href=&#34;https://www.wykop.pl/link/2219310/nauka-angielskiego-z-napisow-do-filmow-i-seriali/&#34; target=&#34;_blank&#34;&gt;Wykop&lt;/a&gt;. We&amp;rsquo;ve received over 800 upvotes which at this time was a pretty good result. It converted to over 30 000 visits on our page on a first few days (at least this is what Google Analytics shown us).&lt;/p&gt;
+
+&lt;p&gt;Initial week consisted of a little over 1400 new registrations in our application. We were very excited about that. People were saying good things about the idea and execution (obviously there was also some negative opinions but overall feedback was good) and we felt great about it.&lt;/p&gt;
+
+&lt;p&gt;The question then was - what should be next stage and how to proceed?&lt;/p&gt;
+
+
+&lt;figure&gt;
+&lt;video class=&#34;video-js&#34; width=&#34;640&#34; height=&#34;385&#34; controls&gt;
+    
+       &lt;source src=&#34;https://lukiasz.github.io/img/wtm/wtm_popcorn.mp4&#34; type=&#34;video/mp4&#34;&gt;
+       
+       
+    
+   Your browser does not support the video tag.
+   &lt;/video&gt;
+   &lt;figcaption&gt;We even released our own version of popcorn time :smile:&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;trying-to-get-attention&#34;&gt;Trying to get attention&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;ve won a local startup competition (Dig Up Start Up in Katowice) and tried interest few VCs in Poland. Unfortunately, without a success. People were interested rather in fast return than in building a global service that will change the way of people are learning languages mostly because the road was not clear to them and also because road was not clear for us. There are huge number of smaller and bigger flashcards-online applications and once you say &lt;em&gt;flashcard&lt;/em&gt; and &lt;em&gt;learning&lt;/em&gt;, people seem to recollect memories of all of these websites and apps and try to think like: &lt;em&gt;ok, that&amp;rsquo;s something like this plus something extra&lt;/em&gt;. It was hard to convince people we&amp;rsquo;ve met that having few thousands of free subscriptions actually proves anything valuable for them. Also, it looked like a lot of registered people were just testing our system using it few times and then never going back again. There was no money inside of Way To Master at this stage. We needed to push it to next level. At this time we still received a number of new subscriptions but it started becoming obvious that we need to focus on broader group rather than only Poles trying to learn English. Also, relying on subtitles for movies coming from not 100% legal sources wasn&amp;rsquo;t the best predictor when it comes to monetizing application.&lt;/p&gt;
+
+&lt;h2 id=&#34;end-of-project&#34;&gt;End of project&lt;/h2&gt;
+
+&lt;p&gt;Due to our implementation, it would require to re-write the whole system in order to support more than English language. At this time both me and Wojtek were studying and working part-time and we decided to not continue. Actually, there was no decision per se that we stop development - it was rather a continuous blanking of effort. We switched to another activities - partially because we needed money that standard job was giving us and partially because we didn&amp;rsquo;t see a next realistic goal.&lt;/p&gt;
+
+&lt;p&gt;It was somewhere about May, 2015. Since then, service was active until now, that is - September 2017.&lt;/p&gt;
+
+&lt;p&gt;Few statistics:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;4379 registered accounts,&lt;/li&gt;
+&lt;li&gt;10894 unique uploaded and translated subtitles,&lt;/li&gt;
+&lt;li&gt;30367202 recognized words that were either known or not known by users,&lt;/li&gt;
+&lt;li&gt;11301546 phrases recognized as separate sentences (less than 3 words per sentence, but please remember they came from movies).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;lessons-learned&#34;&gt;Lessons learned&lt;/h2&gt;
+
+&lt;p&gt;Instead of writing a list of things, I&amp;rsquo;ll write only a single one:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I should do what I believe is the best for the project and not what I suppose to do in the eyes of others.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If we didn&amp;rsquo;t focus on Polish people only and English language only, we could show it to a greater range of people, including huge range of programmers on Reddit and Hacker News. I believe that someone of them might be interested in the idea - not only using it but also helping us with execution. Yes, it would be harder to complete it in time we did it but the results will probably be more valuable. And even if we decided to leave it, we could make it open-source side project and more people could actually benefit from it.&lt;/p&gt;
+
+&lt;p&gt;In the next article you&amp;rsquo;ll read about technicalities of Way To Master and few code samples.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>About</title>
-      <link>https://lukiasz.github.io/posts/my-first-post/</link>
-      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
+      <title>Example Talk</title>
+      <link>https://lukiasz.github.io/talk/example-talk/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://lukiasz.github.io/posts/my-first-post/</guid>
+      <guid>https://lukiasz.github.io/talk/example-talk/</guid>
+      <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://lukiasz.github.io/project/deep-learning/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://lukiasz.github.io/project/deep-learning/</guid>
+      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
+
+&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
+
+&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
+
+&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
+
+&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>External Project</title>
+      <link>https://lukiasz.github.io/project/example-external-project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://lukiasz.github.io/project/example-external-project/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>A Person Re-Identification System For Mobile Devices</title>
+      <link>https://lukiasz.github.io/publication/person-re-identification/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://lukiasz.github.io/publication/person-re-identification/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mobile visual clothing search</title>
+      <link>https://lukiasz.github.io/publication/clothing-search/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://lukiasz.github.io/publication/clothing-search/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
     </item>
     
   </channel>
