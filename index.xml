@@ -11,6 +11,199 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Way To Master - Technical Details</title>
+      <link>https://lukiasz.github.io/post/way-to-master-technicalities/</link>
+      <pubDate>Thu, 21 Sep 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://lukiasz.github.io/post/way-to-master-technicalities/</guid>
+      <description>
+
+&lt;p&gt;In this post I&amp;rsquo;ll write about implementation details of Way To Master. Your can read about what the system was in &lt;a href=&#34;https://lukiasz.github.io/post/way-to-master-post-mortem/&#34;&gt;previous post&lt;/a&gt;. Today I want to briefly describe how things were connected to each other and how some of them were implemented. The overall design wasn&amp;rsquo;t really &amp;ldquo;exceptional&amp;rdquo; or &amp;ldquo;cool&amp;rdquo; so you may wonder - why I&amp;rsquo;m describing it? Well, the main reason is to keep it written down as a reference for me in the future 😄.&lt;/p&gt;
+
+&lt;h2 id=&#34;parts-of-system&#34;&gt;Parts of system&lt;/h2&gt;
+
+&lt;p&gt;From runtime perspective, Way To Master consisted of several blocks.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm-2/wtm-schema-1.svg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Runtime perspective.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;frontend-application&#34;&gt;Frontend Application&lt;/h2&gt;
+
+&lt;p&gt;First application that user could directly interact with was our frontend app. It&amp;rsquo;s responsibility was to handle landing page and  whole frontend logic after logging in. Was written using AngularJS 1. Looked good on desktops and tablets. Only landing page was optimized for phones screens. A bunch of screenshots and some videos are available in &lt;a href=&#34;https://lukiasz.github.io/post/way-to-master-post-mortem&#34;&gt;previous post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;From code organization perspective it was standard Angular app with controllers, views, models, services and some directives (such as directive for some of displayed words which could be double-clicked to update knowledge state - see a picture below).&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm-2/directive.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Moving cursor above word displayed a translation.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;popcorn-time-fork&#34;&gt;Popcorn Time Fork&lt;/h2&gt;
+
+&lt;p&gt;Next app for interacting with users was a fork of one of &lt;a href=&#34;https://en.wikipedia.org/wiki/Popcorn_Time&#34; target=&#34;_blank&#34;&gt;Popcorn Time applications&lt;/a&gt;. Popcorn Time is a torrent client that allows for watching movies and tv shows. Our modification pushed and pulled subtitles to and from our server. After starting an application, user put his credentials into out login popup. Then, subtitles for every movie he watched were sent to our server and then downloaded back with proper translations.&lt;/p&gt;
+
+&lt;h2 id=&#34;desktop-application&#34;&gt;Desktop Application&lt;/h2&gt;
+
+&lt;p&gt;The last client that we wrote was a desktop application for Windows. It was a small tool for making process of uploading/downloading subtitles more convenient. Instead of opening a browser and doing file manipulation there, it allowed for RMB click on subtitles file and selection of new option &lt;strong&gt;Translate Hard Words&lt;/strong&gt;. It was written in C++ and Qt/QML with proper explorer.exe handlers that allowed us to attach to the system right mouse button menu. Why C++? After doing a small prototype we realized that running managed .NET code per every RMB click was a significant overhead. So explorer.exe handler had to be in native code. And since we&amp;rsquo;ve got some experience with C++, we decided to just write everything in it.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm-2/screen.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Desktop app - version for translation without logging in (alpha). User could choose how much was translated by selecting stars representing his knowledge of a language.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;backend-application&#34;&gt;Backend Application&lt;/h2&gt;
+
+&lt;p&gt;It was the main place where everything interesting was happening. From runtime perspective it was a one thing (it was hosted as a single ASP.NET application) but from logical standpoint a lot of things were going on. If we look at it from domain modelling perspective, it would look like this:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm-2/ddd-schema.svg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Backend code organization perspective.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Learning Module&lt;/strong&gt; - &lt;a href=&#34;https://martinfowler.com/bliki/BoundedContext.html&#34; target=&#34;_blank&#34;&gt;Bounded Context&lt;/a&gt; containing &lt;code&gt;UserLanguageKnowledge&lt;/code&gt; aggregate and several other entities related with maintaining user language knowledge states.&lt;/p&gt;
+
+&lt;p&gt;Model for storing knowledge was actually quite straightforward. Every unique &lt;a href=&#34;https://en.wikipedia.org/wiki/Lemma_(morphology)&#34; target=&#34;_blank&#34;&gt;lemma&lt;/a&gt; had has its own row representation in words table. Knowledge of given lemma for given user was stored in &lt;code&gt;WordCard&lt;/code&gt; entity. Knowledge state was either &lt;code&gt;NotKnown&lt;/code&gt; or &lt;code&gt;Known&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;That design would probably not scale well - at the end we were going to store one row per every English lemma per every user of our application. As stated in &lt;a href=&#34;post/way-to-master-post-mortem/&#34; target=&#34;_blank&#34;&gt;previous post&lt;/a&gt;, we ended having more than 30 millions of word cards from less than 5 thousands of users. If I was to write it again, I would probably go for &lt;a href=&#34;https://www.postgresql.org/docs/current/static/datatype-json.html&#34; target=&#34;_blank&#34;&gt;jsonb&lt;/a&gt; column for the whole user language knowledge. It would be a bit more tricky to implement updating a single word knowledge but it&amp;rsquo;ll probably help in DB performance in a long run.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Content Module&lt;/strong&gt; - Bounded Context containing &lt;code&gt;Content&lt;/code&gt; aggregate which represented a single uploaded file with all sentences and words. Model was also quite straightforward. &lt;code&gt;Content&lt;/code&gt; had multiple sentences. Every &lt;code&gt;Sentence&lt;/code&gt; had collection of words in context. &lt;code&gt;Word In Context&lt;/code&gt; contained link to lemma (&lt;code&gt;Word&lt;/code&gt;), abstract location data allowing us to find occurrence of this word in uploaded file, id of &lt;a href=&#34;https://en.wikipedia.org/wiki/Part_of_speech&#34; target=&#34;_blank&#34;&gt;part of speech&lt;/a&gt; and id of &lt;a href=&#34;https://en.wiktionary.org/wiki/synset&#34; target=&#34;_blank&#34;&gt;synset&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;User Profile Module&lt;/strong&gt; - bunch of services for managing accounts. Some of methods were just wrappers for ASP.NET Membership Provider. From what I remember it required a significant amount of work to make it running with PostgreSQL and Entity Framework back then. The interface of ASP.NET Membership looked like it&amp;rsquo;s basing on on Entity Framework structure entirely but in the reality some internal SQL Server stored procedures were called under the hood 😄. Looking now into installed NuGet packages I see that we used the &lt;a href=&#34;https://github.com/jholovacs/pgprovider&#34; target=&#34;_blank&#34;&gt;pgprovider library&lt;/a&gt;. We&amp;rsquo;ve been lucky that it worked as expected 😄.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Administration Module&lt;/strong&gt; - bunch of services for managing  administration tasks.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Translation Module&lt;/strong&gt; - quite interesting piece. It was a service which was providing translations for words. Translations consisted of&amp;hellip; well&amp;hellip; translations 😄 and word definitions taken from &lt;a href=&#34;https://wordnet.princeton.edu/&#34; target=&#34;_blank&#34;&gt;WordNet&lt;/a&gt;. We utilized &lt;a href=&#34;http://www.wordreference.com/&#34; target=&#34;_blank&#34;&gt;WordReference&amp;rsquo;s APIs&lt;/a&gt; with quite aggressive caching so we didn&amp;rsquo;t need to call it per every single word. WordNet database was translated and stored in our PostgreSQL database.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;When we were implementing this, we were learning about how to design object oriented code. Some of design decisions made sense, some not. For example, today I would probably keep &lt;strong&gt;Content&lt;/strong&gt; and &lt;strong&gt;Learning&lt;/strong&gt; bounded contexts together. But from the other hand - what&amp;rsquo;s the point of crafting code that is used by no-one? If I could dedicate another extra minute, I should spent it on crafting value proposition, not on improving the code that was working.&lt;/p&gt;
+
+&lt;h2 id=&#34;postgresql&#34;&gt;PostgreSQL&lt;/h2&gt;
+
+&lt;p&gt;Well, what to write about&amp;hellip; Just PostgreSQL database 😄. We didn&amp;rsquo;t use jsonb features.&lt;/p&gt;
+
+&lt;h2 id=&#34;file-parsing-translating-services&#34;&gt;File Parsing / Translating Services&lt;/h2&gt;
+
+&lt;p&gt;In Way To Master we&amp;rsquo;ve been processing subtitles for movies - in two formats - &lt;a href=&#34;https://en.wikipedia.org/wiki/SubRip&#34; target=&#34;_blank&#34;&gt;SubRip&lt;/a&gt; and &lt;a href=&#34;https://en.wikipedia.org/wiki/SubStation_Alpha&#34; target=&#34;_blank&#34;&gt;SubStation Alpha&lt;/a&gt; (the latter one was only as a output format).&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/screen2.jpg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Thanks to SSA format, we could display translations on the top.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Obviously, if we wanted to parse and modify content of subtitles, we needed to parse these files correctly. We recognized manipulations on files as a possible bottleneck so we designed code in the way that services for parsing and for inserting translations were quite separated from backend application&amp;rsquo;s code. They were implemented quite good, I remember having great fun writing this part of code. Let me give you a short description.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm-2/killbill.jpg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Colorful in-line SRT format translations&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;In the backend application part there was a &lt;code&gt;ContentProcessingService&lt;/code&gt;. It was implementing a &lt;a href=&#34;http://microservices.io/patterns/service-registry.html&#34; target=&#34;_blank&#34;&gt;Service Registry&lt;/a&gt; pattern allowing for adding support for new file formats. Adding support consisted of writing a new web application that was exposing methods for:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;returning metadata - which formats with which options were supported,&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;extracting sentences (with their positions) from file,&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;inserting translations for text inside sentences (usually just for words).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then, we&amp;rsquo;re supposed to add it&amp;rsquo;s url into database so that backend could know about support for new format.&lt;/p&gt;
+
+&lt;p&gt;After having sentences extracted, on the backend part, words from sentences were extracted and analyzed using custom text analyzer.&lt;/p&gt;
+
+&lt;h4 id=&#34;a-note-on-parsing&#34;&gt;A note on parsing&lt;/h4&gt;
+
+&lt;p&gt;For generating parsers we used great &lt;a href=&#34;http://www.antlr.org/&#34; target=&#34;_blank&#34;&gt;ANTLR&lt;/a&gt; toolset. Writing grammars and using resulting parsers was a pleasure comparing to my university experience with Bison/Flex. Actually the whole SRT grammar was quite simple, here is the lexer part:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lexer grammar SRTLexer;
+TIMESPAN: TIME ARROW TIME -&amp;gt; pushMode(TEXT);
+ 
+TIME: NUMBER NUMBER &#39;:&#39; NUMBER NUMBER &#39;:&#39; NUMBER NUMBER &#39;,&#39; NUMBER NUMBER NUMBER ;
+ID: NUMBER+; 
+NUMBER: &#39;0&#39;..&#39;9&#39; ;
+NEWLINE: &#39;\r&#39;? &#39;\n&#39;;
+ARROW: &#39; --&amp;gt; &#39; ;
+mode TEXT;
+
+CAPTION: LINE+ -&amp;gt; popMode;
+LINE: ~[\r\n]+ END -&amp;gt; skip;
+END: &#39;\r&#39;? &#39;\n&#39; -&amp;gt; skip;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and parser part:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;parser grammar SRTParser;
+options { tokenVocab = SRTLexer; }
+
+file: (subtitle NEWLINE) + subtitle NEWLINE ? EOF;
+subtitle: ID NEWLINE TIMESPAN CAPTION NEWLINE*;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h4&gt;
+
+&lt;p&gt;If you found anything of this interesting, please drop me a message or a comment below. Parsers part is available on Github: &lt;a href=&#34;https://github.com/lukiasz/WTM-Harbors/&#34; target=&#34;_blank&#34;&gt;WTM-Harbors&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>The history of Way To Master and lessons learned</title>
       <link>https://lukiasz.github.io/post/way-to-master-post-mortem/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0200</pubDate>
@@ -18,18 +211,18 @@
       <guid>https://lukiasz.github.io/post/way-to-master-post-mortem/</guid>
       <description>
 
-&lt;p&gt;This page describes a brief history of one of the most interesting after-hour projects that I&amp;rsquo;ve been involved into. It&amp;rsquo;s called &lt;a href=&#34;www.waytomaster.com&#34; target=&#34;_blank&#34;&gt;Way To Master&lt;/a&gt; and it was intended to help learning English for Polish people. Nothing related to it happened for a two years from now. There are no users, no ads, no new features. Also, there is one week left until domain will expire so probably now the page you&amp;rsquo;re reading is the only visible sign of existence of Way To Master. I miss it a little because it was one of most interesting things I&amp;rsquo;ve did and also I believe that idea is still valid. I&amp;rsquo;m writing this post also for future-me. There will be a point in my life when I&amp;rsquo;ll forget some of these things and then I&amp;rsquo;ll just open it and read.&lt;/p&gt;
+&lt;p&gt;This page describes a brief history of one of the most interesting after-hour projects that I&amp;rsquo;ve been involved into. It was called Way To Master and it was intended to help learning English for Polish people. Nothing related to it happened for a two years from now. There are no users, no ads, no new features. Also, there is one week left until domain will expire so probably now the page you&amp;rsquo;re reading is one of few visible signs of existence of Way To Master. I&amp;rsquo;m writing this post mostly for myself in the future. There will be a point in my life when I&amp;rsquo;ll forget some of these things and then I&amp;rsquo;ll just open it and read, assuming Github won&amp;rsquo;t go offline 😄.&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;ve split this article into two separate posts. The first one (that you&amp;rsquo;re reading right now) is overall description of the project. The second one explains technicalities and will be published soon.&lt;/p&gt;
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/screen1.jpg&#34; /&gt;
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm-1/screen1.jpg&#34; /&gt;
     
     
     &lt;figcaption&gt;
-        &lt;h4&gt;In-line translating (.srt format).&lt;/h4&gt;
+        &lt;h4&gt;In-line translation (.srt format).&lt;/h4&gt;
         
     &lt;/figcaption&gt;
     
@@ -38,16 +231,16 @@
 
 &lt;h2 id=&#34;learning-foreign-languages-standard-approach&#34;&gt;Learning foreign languages - standard approach&lt;/h2&gt;
 
-&lt;p&gt;Let me start from the base idea. Way to master was all about learning foreign languages. And learning a language is a bit twisted phenomena comparing to learning other things. Usually, if you want to master some subject, you&amp;rsquo;re using language (either spoken or written) to learn new concepts. The role of a language here is acting as a transport layer carrying content to learn. By adjusting language, one can gain better understanding of given concept - sometimes learned topics are easier to understand if different words are used and sometimes the opposite holds true.&lt;/p&gt;
+&lt;p&gt;Way to master was all about learning foreign languages. And learning a language is a bit twisted phenomena comparing to learning other things. Usually, if you want to master some subject, you&amp;rsquo;re using language (either spoken or written) to learn new concepts. A programmer could say that the role of a language here is acting as a transport layer carrying content to learn. By adjusting language, one can gain better understanding of given concept - sometimes learned topics are easier to understand if different words are used and sometimes the opposite holds true.&lt;/p&gt;
 
-&lt;p&gt;Ff you&amp;rsquo;re learning a language, what you want to learn is the transport layer and you&amp;rsquo;re doing it by utilizing some content - articles, sentences, songs, movies, dialogues. Whatever way of learning a language you will use, you need &lt;em&gt;something&lt;/em&gt; to read, write, speak or hear about.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re learning a language things are different. What you want to learn is &lt;em&gt;the transport layer&lt;/em&gt; and you&amp;rsquo;re doing it by utilizing some content - articles, sentences, songs, movies, dialogues. Whatever way of learning a language you will use, you need &lt;em&gt;something&lt;/em&gt; to read, write, speak or hear about.&lt;/p&gt;
 
-&lt;p&gt;These &lt;em&gt;somethings&lt;/em&gt; to read, write, speak or hear about are usually fixed and provided by a course creators. Sometimes student has limited possibility of choosing one article or another but there are chances that nothing will really meet his areas of interests anyway. It&amp;rsquo;s partially because people are varying on their interests and partially because learning materials need to be adjusted basing on language level.&lt;/p&gt;
+&lt;p&gt;If you prefer to learn a language using one of most common approaches - stationary course, these &lt;em&gt;somethings&lt;/em&gt; to read, write, speak or hear about are usually fixed and provided by a course creators. Sometimes student has limited possibility of choosing one article or another but there are chances that nothing will really meet his areas of interests anyway. It&amp;rsquo;s partially because people are varying on their interests and partially because learning materials need to be adjusted basing on language level.&lt;/p&gt;
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/app_screen1.gif&#34; /&gt;
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm-1/app_screen1.gif&#34; /&gt;
     
     
     &lt;figcaption&gt;
@@ -74,7 +267,7 @@
 &lt;p&gt;Now, user could:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Download modified content,&lt;/li&gt;
+&lt;li&gt;Download modified content with translations,&lt;/li&gt;
 &lt;li&gt;Download flashcards with translations and words contexts,&lt;/li&gt;
 &lt;li&gt;Learn unknown words on the webpage or directly mark them as known.&lt;/li&gt;
 &lt;/ol&gt;
@@ -83,15 +276,13 @@
 
 &lt;ol&gt;
 &lt;li&gt;Uploading, downloading and utilizing modified content - watching movies, playing computer games, reading e-books,&lt;/li&gt;
-&lt;li&gt;Come back to system few times in a week to make repetitions of learned words.&lt;/li&gt;
+&lt;li&gt;Coming back to system few times in a week to make repetitions of learned words.&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;One interesting idea that come later was to allow to combine already translated materials - like movies or games subtitles. They usually have many translations and starting learning from them could only focus on simpler sentences leaving harder ones untranslated.&lt;/p&gt;
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/screen2.jpg&#34; /&gt;
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm-1/screen2.jpg&#34; /&gt;
     
     
     &lt;figcaption&gt;
@@ -104,12 +295,12 @@
 
 &lt;h2 id=&#34;the-big-picture&#34;&gt;The big picture&lt;/h2&gt;
 
-&lt;p&gt;Assuming correct implementation, this system would allow anyone to learn any popular language with an additional boost of experiencing content he likes. That should make the whole process of language acquisition a lot more convenient and a little similar to how people are learning new languages when they migrate to other countries. I couldn&amp;rsquo;t emphasize that more - just please hold on for a moment and imagine - doesn&amp;rsquo;t it look like a way of learning languages that will anyway come up at one time in the future? People playing computer games, watching movies, reading books AND learning languages by the way&amp;hellip; The idea is very alluring, at least for me.&lt;/p&gt;
+&lt;p&gt;Assuming correct implementation, this system would allow anyone to learn any popular language with an additional boost of experiencing content he likes. That should make the whole process of language acquisition a lot more convenient and similar to how people are learning new languages when they migrate to other countries. I couldn&amp;rsquo;t emphasize that more - just please hold on for a moment and imagine - doesn&amp;rsquo;t it look like a way of learning languages that will anyway come up at one time in the future? People playing computer games, watching movies, reading books AND learning languages by the way&amp;hellip; The idea is very alluring, at least for me.&lt;/p&gt;
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/app_screen2.gif&#34; /&gt;
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm-1/app_screen2.gif&#34; /&gt;
     
     
     &lt;figcaption&gt;
@@ -129,7 +320,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://lukiasz.github.io/img/wtm/landing.png&#34; /&gt;
+        &lt;img src=&#34;https://lukiasz.github.io/img/wtm-1/landing.png&#34; /&gt;
     
     
     &lt;figcaption&gt;
@@ -142,7 +333,7 @@
 
 &lt;h2 id=&#34;final-stage&#34;&gt;Final stage&lt;/h2&gt;
 
-&lt;p&gt;Beginning of 2014 was time of everyone doing their startups, at least that is how I remembered that time. There were a lot of conferences related to this topic in Poland and a lot of buzz about it. Everyone was doing landing pages so we decided to do a landing page before we complete final version. So we did a landing page. Publishing a real service was a little harder than we thought; yet we had a lot of fun doing side quests - like spending days trying to host our solution on linux in one of Polish small cloud provider or asking random people whether they like the idea. At some point in time we decided to reshape the idea and accomplish something simpler. Driven by all startup gurus advices, we felt that we need to find our target group and focus mostly on them. So we picked:&lt;/p&gt;
+&lt;p&gt;Beginning of 2014 was time of everyone doing their startups. There were a lot of conferences related to this topic in Poland and a lot of buzz about it. Everyone was doing landing pages so we decided to do a landing page before we complete final version. So we did a landing page 😄. Publishing a real service was a little harder than we thought; yet we had a lot of fun doing side quests - like spending days trying to host our solution on linux in one of Polish small cloud provider or asking random people whether they like the idea. At some point in time we decided to reshape the idea and accomplish something simpler. Driven by all startup gurus advices, we felt that we need to find our target group and focus mostly on them. So we picked:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Movies subtitles only&lt;/li&gt;
@@ -157,7 +348,7 @@
 &lt;figure&gt;
 &lt;video class=&#34;video-js&#34; width=&#34;640&#34; height=&#34;385&#34; controls&gt;
     
-       &lt;source src=&#34;https://lukiasz.github.io/img/wtm/wtm_desktop.mp4&#34; type=&#34;video/mp4&#34;&gt;
+       &lt;source src=&#34;https://lukiasz.github.io/img/wtm-1/wtm_desktop.mp4&#34; type=&#34;video/mp4&#34;&gt;
        
        
     
@@ -176,7 +367,7 @@
 &lt;figure&gt;
 &lt;video class=&#34;video-js&#34; width=&#34;640&#34; height=&#34;385&#34; controls&gt;
     
-       &lt;source src=&#34;https://lukiasz.github.io/img/wtm/wtm_popcorn.mp4&#34; type=&#34;video/mp4&#34;&gt;
+       &lt;source src=&#34;https://lukiasz.github.io/img/wtm-1/wtm_popcorn.mp4&#34; type=&#34;video/mp4&#34;&gt;
        
        
     
@@ -187,7 +378,7 @@
 
 &lt;h2 id=&#34;trying-to-get-attention&#34;&gt;Trying to get attention&lt;/h2&gt;
 
-&lt;p&gt;We&amp;rsquo;ve won a local startup competition (Dig Up Start Up in Katowice) and tried interest few VCs in Poland. Unfortunately, without a success. People were interested rather in fast return than in building a global service that will change the way of people are learning languages mostly because the road was not clear to them and also because road was not clear for us. There are huge number of smaller and bigger flashcards-online applications and once you say &lt;em&gt;flashcard&lt;/em&gt; and &lt;em&gt;learning&lt;/em&gt;, people seem to recollect memories of all of these websites and apps and try to think like: &lt;em&gt;ok, that&amp;rsquo;s something like this plus something extra&lt;/em&gt;. It was hard to convince people we&amp;rsquo;ve met that having few thousands of free subscriptions actually proves anything valuable for them. Also, it looked like a lot of registered people were just testing our system using it few times and then never going back again. There was no money inside of Way To Master at this stage. We needed to push it to next level. At this time we still received a number of new subscriptions but it started becoming obvious that we need to focus on broader group rather than only Poles trying to learn English. Also, relying on subtitles for movies coming from not 100% legal sources wasn&amp;rsquo;t the best predictor when it comes to monetizing application.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ve won a local startup competition (Dig Up Start Up in Katowice) and tried interest few VCs in Poland. Unfortunately, without a success. People were interested rather in fast return than in building a global service that will change the way of people are learning languages. Mostly because the road was not clear to them and also because road was not clear for us. There are huge number of smaller and bigger flashcards-online applications and once you say &lt;em&gt;flashcard&lt;/em&gt; and &lt;em&gt;learning&lt;/em&gt;, people seem to recollect memories of all of these websites and apps and try to think like: &lt;em&gt;ok, that&amp;rsquo;s something like this plus something extra&lt;/em&gt;. It was hard to convince people we&amp;rsquo;ve met that having few thousands of free subscriptions actually proves anything valuable for them. Also, it looked like a lot of registered people were just testing our system using it few times and then never going back again. There was no sign of money inside of Way To Master at this stage. We needed to push it to next level. At this time we still received a number of new subscriptions but it started becoming obvious that we need to focus on broader group rather than only Poles trying to learn English. Also, relying on subtitles for movies coming from not 100% legal sources wasn&amp;rsquo;t obviously the best predictor when it comes to monetizing application 😄.&lt;/p&gt;
 
 &lt;h2 id=&#34;end-of-project&#34;&gt;End of project&lt;/h2&gt;
 
