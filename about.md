@@ -48,6 +48,9 @@ In 2016 I moved to Shiji where I work now.
 
 {% include figure.html url="/assets/about/snow.jpg" description="I love skiing!" %}
 
-I love skiing, playing piano, hiking, and everything connected to software development - from low-level algorithms and data structures to high-level business concepts. From imperative procedures, to OOP modules. I love functional programming. On a daily basis I work with C# codebase.
+I like everything connected to software development - from low-level algorithms and data structures to modeling high-level business concepts. From fine-tuned imperative procedures, to big object-oriented services playing well together. I led and developed a couple of interesting projects about which you can read in my CV.
+
+
+Beaides programming, I love skiing, playing jazz on piano, hiking and roller-skating.
 
 {% include figure.html url="/assets/about/bangkok-november-2017.jpg" description="Me and my wife" %}
