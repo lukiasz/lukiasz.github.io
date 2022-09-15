@@ -3,18 +3,6 @@ layout: page
 title: About
 ---
 
-
-
-
-
-
-
-
-
-
-________________
-
-
 My name is Łukasz Olender and I'm a 31 years old computer programmer living in Chorzów, Poland.
 
 
