@@ -3,7 +3,9 @@ layout: page
 title: Recommended Books, MOOCs, Papers, etc.
 ---
 
+Here are some of things that I found useful at some point in my life.
 
+## MOOCs
 
   - [How To Build a Startup](https://www.udacity.com/course/how-to-build-a-startup--ep245),
   - [Foundations of Professional Identity](https://www.coursera.org/learn/professional-identity)
@@ -13,8 +15,15 @@ title: Recommended Books, MOOCs, Papers, etc.
   - [Social Psychology](https://www.coursera.org/learn/social-psychology)
 
 
-Books Recommendations
+## Books
 
+#### Facts and Fallacies of Software Engineering
+
+{% include book-entry.html url="/assets/about/snow.jpg" description="I love skiing!" %}
+
+
+
+## Papers
 
 Papers:
   - hospital assignment PAS

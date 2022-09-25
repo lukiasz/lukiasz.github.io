@@ -305,3 +305,11 @@ figure img {
 figure figcaption {
   text-align: center;
 }
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 85%;
+}
