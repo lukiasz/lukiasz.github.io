@@ -1,7 +1,7 @@
 jtitle: Lukasz Olender
-description: "Lukasz Olender homepage"
+description: "Łukasz Olender homepage"
 author:
-  name: "Lukasz Olender"
+  name: "Łukasz Olender"
   email: "lukiasz@gmail.com"
   url: "lukiasz.github.io"
 
@@ -28,5 +28,5 @@ plugins:
   - jekyll-sitemap
 
 # Custom variables
-owner : "Lukasz Olender"
+owner : "Łukasz Olender"
 year : "2022"

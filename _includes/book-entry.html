@@ -1,4 +1,15 @@
-<div class="row">
-    <div class="column">afdssdffdssd</div>
-    <div class="column">dsdffdssdfsa</div>
+<div class="row bookrow">
+  <div class="column">
+    {% capture mdurl %}books/{{ include.book }}.md{% endcapture %}
+    {% capture plainmd %}{% include {{ mdurl }} %}{% endcapture %}
+    {{ plainmd | markdownify }}
+  </div>
+    <div class="column">
+      {% capture imgurl %}assets/books/{{ include.book }}.png{% endcapture %}
+      
+        <img src="{{ imgurl }}" class="book-img">
+    
+    </div>
+    
+    
   </div> 
