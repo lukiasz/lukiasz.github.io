@@ -1,0 +1,4 @@
+### The Everyday Parenting Toolkit: The Kazdin Method for Easy, Step-by-Step, Lasting Change for You and Your Child
+#### *-- by Alan E. Kazdin*
+
+The only book I've read about rearing children. It presents author's own ABC method that is used to change child behavior. What does that mean? For example, let's say you have a problem because your little one doesn't clean his teeth. This book will teach you effective, science-based method that you can apply to make cleaning teeth happening. And the same method you can apply to many other problems that you and your children will encounter. It will also teach you why punishments are not effective, why you shouldn't repeat yourself over and over, why explaining things may not work, why you can't spoil your kid by giving him praises and many others. There is also [related course on Coursera](https://www.coursera.org/learn/everyday-parenting).
