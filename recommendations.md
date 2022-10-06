@@ -2,15 +2,10 @@
 layout: page
 title: Recommended Books, MOOCs, Papers, etc.
 ---
-
-Here are some of things that I found useful at some point in my life.
-
-
 # Books
+{% capture currentyear %}{{ 'now' | date: "%Y" }}{% endcapture %}
 
-In fast-paced world full of video tutorials, blogs, courses, one may say - why reading books? And my answer is: because they inspire and make me to think as nothing else does plus they're pretty convinient.
-
-To read properly a book, I need to focus, have a quiet place, and invest in it. And it does pays off. I love reading books about eternal, lifelong concepts, about ideas that are transferrable between jobs and positions. Here you'll find some of my recommendations.
+In {{ currentyear }}, I do still believe in learning from books. They inspire me, force me to focus, to find a quiet place and to dedicate my time into them. And with the assumption that we're talking about worthful positions, it does pay off. Here you'll find some of my recommendations. 
 
 I'm reading books on physical paper, on Onyx Max Boox Pro 2, Kindle Whitepaper 2 and my phone. More about my reading-learning setup soon.
 
@@ -20,10 +15,11 @@ I'm reading books on physical paper, on Onyx Max Boox Pro 2, Kindle Whitepaper 2
 {% include book-entry.html book="operating-systems" %}
 {% include book-entry.html book="requirements" %}
 {% include book-entry.html book="management" %}
+{% include book-entry.html book="writing" %}
 {% include book-entry.html book="kazdin" %}
 
 
-## MOOCs
+# MOOCs
 
   - [How To Build a Startup](https://www.udacity.com/course/how-to-build-a-startup--ep245),
   - [Foundations of Professional Identity](https://www.coursera.org/learn/professional-identity)
@@ -31,10 +27,3 @@ I'm reading books on physical paper, on Onyx Max Boox Pro 2, Kindle Whitepaper 2
   - [Learning How To Learn](https://www.coursera.org/learn/learning-how-to-learn)
   - [Software Security](https://www.coursera.org/learn/software-security)
   - [Social Psychology](https://www.coursera.org/learn/social-psychology)
-
-
-## Papers
-
-  - hospital assignment PAS
-  - elaboration likelhood model
-  
