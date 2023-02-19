@@ -17,7 +17,7 @@ I'm reading books on physical paper, on Onyx Max Boox Pro 2, Kindle Whitepaper 2
 {% include book-entry.html book="management" %}
 {% include book-entry.html book="writing" %}
 {% include book-entry.html book="kazdin" %}
-
+{% include book-entry.html book="ousterhout" %}
 
 # MOOCs
 
