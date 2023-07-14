@@ -7,11 +7,7 @@ render = true
 
 My name is Łukasz Olender and I'm a 31 years old computer programmer living in Chorzów, Poland.
 
-{% include figure.html url="/assets/about/photo-formal.jpg" description="This is me!" %}
-
-![dsa](photo-formal.jpg)<small>This is me!</small>
-
-{% set page = get_page(path="blog/page2.md") %}
+{{ figure(url="photo-formal.jpg", description="This is me!") }}
 
 I was born here on 13th of November 1990. I have three siblings -- I'm the oldest one. I had a beautiful childhood during which I've spent a lot of time on the countryside, in a small summerhouse in moutains.
 
@@ -21,7 +17,7 @@ I studied Computer Science at the Silesian University Of Technology in Gliwice. 
 
 Apart from University, I was loving MOOCs (well, I still love them but don't have time for them anymore). I finished "Artificial Intelligence" by Sebastian Thrun and Peter Norvig from Stanford University in the fall of 2011. I think that was one of first MOOCs ever.
 
-{% include figure.html url="/assets/about/mooc.png" description="I nailed it, didn't I?" %}
+{{ figure(url="mooc.png", description="I nailed it, didn't I? 😊") }}
 
 I participated in many MOOCs, some of them completed, some of them only partially finished. See my [recommendations page](/recommendations)!
 
@@ -31,6 +27,6 @@ Starting from January 2012 I started my career as a software developer in Euvic.
 
 I like everything connected to software development - from low-level algorithms and data structures to modeling high-level business concepts. From fine-tuned imperative procedures, to big object-oriented services playing well together. I led and developed a couple of interesting projects about which you can read in my CV.
 
-Besides programming, I love skiing, playing casual songs on piano, hiking and roller-skating. I wish I had more time :)
+Besides programming, I love skiing, playing casual songs on piano, hiking and roller-skating. I wish I had more time 😊
 
-{% include figure.html url="/assets/about/snow.jpg" description="I love skiing!" %}
+{{ figure(url="snow.jpg", description="I like skiing!") }}
