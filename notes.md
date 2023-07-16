@@ -11,6 +11,5 @@
 
 {% end %}
 
-
 {{ figure(url="" description="") }}
 
