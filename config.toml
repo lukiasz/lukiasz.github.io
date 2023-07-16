@@ -6,7 +6,7 @@ compile_sass = true
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
-
+title = "Lukasz Olender"
 theme = "anpu"
 
 taxonomies = [
@@ -22,6 +22,5 @@ highlight_code = false
 [extra]
 anpu_menu_links = [
     { url = "$BASE_URL/about/", name = "About" },
-    { url = "$BASE_URL/main/", name = "Main" },
-    { url = "$BASE_URL/main-index/", name = "Main-Index" },
+    { url = "$BASE_URL/recommendations/", name = "Recommendations" },
 ]

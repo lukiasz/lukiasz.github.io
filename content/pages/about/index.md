@@ -5,7 +5,7 @@ template = "page.html"
 render = true
 +++
 
-My name is Łukasz Olender and I'm a 31 years old computer programmer living in Chorzów, Poland.
+My name is Łukasz Olender and I'm a 33 years old computer programmer living in Chorzów, Poland.
 
 {{ figure(url="photo-formal.jpg", description="This is me!") }}
 
@@ -21,7 +21,7 @@ Apart from University, I was loving MOOCs (well, I still love them but don't hav
 
 I participated in many MOOCs, some of them completed, some of them only partially finished. See my [recommendations page](/recommendations)!
 
-During my University adventure, I also took an opportunity to create a small startup about which you can read [here](/wtm-post-mortem) and [here](wtm-technicalities).
+During my University adventure, I also took an opportunity to create a small startup about which you can read [here](/blog/wtm-post-mortem) and [here](/blog/wtm-technicalities).
 
 Starting from January 2012 I started my career as a software developer in Euvic. In 2016 I moved to Shiji where I work now as technical leader of a team of 18.
 

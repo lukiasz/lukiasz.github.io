@@ -7,9 +7,7 @@ render = true
 
 # Books
 
-I read books. They inspire me, force me to focus, to find a quiet place and to dedicate my time into them. It does pay off. Here you'll find some of my recommendations. 
-
-I'm reading books on physical paper, on Onyx Max Boox Pro 2, Kindle Whitepaper 2 and my phone. More about my reading-learning setup soon.
+I read books. They inspire and force me to find a quiet place and dedicate time into them. It does pay off. Here you'll find some of my recommendations. 
 
 {% book(title="Facts and Fallacies of Software Engineering", author="Robert L. Glass", image="recommendations/facts.png") %}
 

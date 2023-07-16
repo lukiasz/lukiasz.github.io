@@ -1,5 +1,6 @@
 # TO DO
 
+    - Zrob zeby to dzialalo!
     - Foty od Owala!
     - Zdjecie formalne jest badziewne.
 
@@ -9,3 +10,7 @@
 {% book(title="", author="", image="recommendations/.png") %}
 
 {% end %}
+
+
+{{ figure(url="" description="") }}
+
