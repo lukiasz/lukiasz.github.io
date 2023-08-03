@@ -8,7 +8,7 @@ summary = "Is delivering value early always the best way of developing software?
 tags = ["programming", "work"]
 +++
 
-I'm pretty sure you've seen this picture before:
+You might have seen this picture before:
 
 {{ figure(url="/blog/iterating-on-concept/iterating-on-concept.png") }}
 
