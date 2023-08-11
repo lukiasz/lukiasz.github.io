@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+
+    <title>Does your code has to be perfect?</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="https://lukiasz.github.io/main.css">
+
+    
+
+    
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to content</a>
+    <div class="container">
+        <header> 
+            <h1 class="site-header">
+                <a href="https:&#x2F;&#x2F;lukiasz.github.io">Lukasz Olender</a>
+            </h1>
+            <nav>
+                
+                
+                
+
+                <a target="_blank"  href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;%C5%82ukasz-olender-3ba15572&#x2F;">LinkedIn</a>
+                
+                
+
+                <a target="_blank"  href="https:&#x2F;&#x2F;lukiasz.github.io&#x2F;about&#x2F;cv.pdf">My CV</a>
+                
+                
+
+                <a target="_self"  href="https:&#x2F;&#x2F;lukiasz.github.io&#x2F;about&#x2F;">About</a>
+                
+                
+
+                <a target="_self"  href="https:&#x2F;&#x2F;lukiasz.github.io&#x2F;recommendations&#x2F;">Recommendations</a>
+                
+                
+            </nav>
+        </header>
+        <main id="main" tabindex="-1">
+            
+
+<article class="post">
+    <header>
+        <h1>Does your code has to be perfect?</h1>
+    </header>
+    <div class="content">
+        <p>One of thoughts that came to my mind some time ago was the conflict between spending more time on <em>perfect</em> code vs iterating quickly while having <em>good enough</em> code.</p>
+<p>So... What is perfect code at all? Can we express it in objective terms meaning that some fragment is perfect or closer to perfection than the other fragment?</p>
+<span id="continue-reading"></span>
+<p>Consider two snippets:</p>
+<pre><code>for (int i = 0; i &lt; n; ++i)
+{
+    ...
+}
+</code></pre>
+<p>vs</p>
+<pre><code>var range = Enumerable.Range(0, n).Select(x =&gt; ...);
+</code></pre>
+<p>There are multiple people with different mindsets, experiences, personal tastes, and so on. But... If there would be an omniscient programming god who could judge - which snippet would he choose?</p>
+<h2 id="you-can-t-judge-code-without-knowing-context">You can't judge code without knowing context</h2>
+<p>And the answer is... <strong>the first one</strong>!</p>
+<p>Just kidding 😊. No one can answer to that question without knowing the context. The first fragment is doing <em>something</em>, and the second one is doing <em>something else</em>. One can explain what the computer will do when executing these of two fragments - how it'll be interpreted, what would be the result, maybe some performance characteristics and other details and... that's it. Can't objectively tell which one is better.</p>
+<p>We're writing the code to solve some problems, and without knowing the problem, we can't judge the code. For the sake of the argument, imagine these fragments being sent to <a href="https://www.ioccc.org/">The International Obfuscated C Code Contest</a>. Both of them would be totally bad because they aren't obfuscated at all, and they're not even written in C. But even without going to such extremes, the answer is still not obvious. Maybe we could start asking whether such code was part of some performance-critical library? Or maybe that doesn't matter even in that case? Maybe the <strong>n</strong> is small and the code is not on the hot path at all?</p>
+<p>The example is just a loop written in two flavors. In the everyday life, we're choosing from an infinite number of possible solutions that require more analysis. How on earth could anyone say which fragment of code is better without knowing the context?</p>
+<h2 id="you-need-to-judge-the-solution">You need to judge the solution</h2>
+<p>These isn't just <em>perfect</em> code without the problem that it solves, but I guess there could be a <em>perfect</em> solution to a given problem, available for those who know the entire state of the universe 😊 Exploring problem domain – sometimes interesting, sometimes laborious work – must suffice for the rest of us 😊. Quite a big part of working as a programmer is uncovering the problem. The more variables you take into consideration, the better solution you can create.</p>
+<p>And that better solution might be non-obvious and beyond those of us who don't bother. Sometimes it does not include writing any code at all – or quite contrary – requires some additional code that might look as unnecessary at first glance.</p>
+<p>Not every customer requirement has to be satisfied by writing more and more lines of code (which require more hours to maintain). That's the power of knowing well the domain in which you implement the software – quite often you can solve the problem in a different way than originally planned.</p>
+<p>Every now and then implementing more generic mechanisms and functionalities pays off. But in many scenarios it doesn't. Sometimes it <em>would</em> pay off but you can't generalize it because you don't have enough skills and you don't even know how to do it. If <em>knowing the context is the king</em>, <em>knowing your craftmanship is the queen</em>.</p>
+<h2 id="summary">Summary</h2>
+<p>You <em>write the code to solve the problem</em>, not <em>just</em> write the code for the sake of writing the code. You judge others code from the perspective how well is solves the problem you have.</p>
+<p>Have a nice day! 😊</p>
+
+    </div>
+
+    
+    <div class="article-info">
+        
+        <div class="article-date"> 3 August 2023</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://lukiasz.github.io/tags/programming/">#programming</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+</article>
+
+
+        </main>
+        <footer>
+            <p>
+                <!-- © Lukasz Olender 2023<br> -->
+            </p>
+            <p>
+                
+                
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
